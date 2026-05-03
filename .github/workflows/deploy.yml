@@ -30,4 +30,4 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           cd worker
-          npx wrangler deploy --verbose > ../deploy_log.txt 2>&1 || (cat ../deploy_log.txt && exit 1)
+          npx wrangler deploy > ../deploy_log.txt 2>&1 || (cat ../deploy_log.txt && exit 1)

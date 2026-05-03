@@ -4,7 +4,7 @@ info:
   description: High-performance prompt compression API optimized for mobile LLMs.
   version: 1.0.0
 servers:
-  - url: https://prompt-compressor-api.YOUR_SUBDOMAIN.workers.dev
+  - url: https://prompt-compressor-api.chenghun1234.workers.dev
 paths:
   /api/compress:
     post:

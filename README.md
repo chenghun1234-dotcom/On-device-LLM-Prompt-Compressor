@@ -1,5 +1,7 @@
 # On-device LLM Prompt Compressor (Zero-Cost Architecture)
 
+**Live Demo:** [https://prompt-compressor-api.chenghun1234.workers.dev](https://prompt-compressor-api.chenghun1234.workers.dev)
+
 Optimizing LLM performance on mobile devices (Gemma, Llama) by reducing token count without losing semantic meaning.
 
 ## 🚀 Key Features

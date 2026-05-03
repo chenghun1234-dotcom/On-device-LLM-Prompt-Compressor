@@ -10,6 +10,13 @@ export default {
       return handleCompress(request, env);
     }
 
+    // Health check for RapidAPI
+    if (url.pathname === '/api/ping') {
+      return new Response(JSON.stringify({ status: 'ok', timestamp: Date.now() }), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     // Serve documentation/landing page
     if (url.pathname === '/' || url.pathname === '/index.html') {
       return serveLandingPage();

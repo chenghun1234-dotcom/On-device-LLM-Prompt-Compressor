@@ -9,6 +9,4 @@ ENVIRONMENT = "production"
 # binding = "ENTROPY_DATA"
 # id = "YOUR_KV_NAMESPACE_ID"
 
-[build]
-command = "wasm-pack build --target web --out-dir worker/pkg"
-watch_dir = "src"
+

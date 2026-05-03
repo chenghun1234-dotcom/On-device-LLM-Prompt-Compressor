@@ -1,4 +1,5 @@
 import init, { PromptCompressor } from './pkg/prompt_compressor.js';
+import wasm from './pkg/prompt_compressor_bg.wasm';
 
 export default {
   async fetch(request, env, ctx) {
@@ -24,7 +25,7 @@ async function handleCompress(request, env) {
     const { instruction, context, examples, config } = body;
 
     // Load Wasm
-    await init();
+    await init(wasm);
     const compressor = new PromptCompressor();
 
     const input = JSON.stringify({ instruction, context, examples });

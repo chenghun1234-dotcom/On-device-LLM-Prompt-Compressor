@@ -20,14 +20,14 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build Wasm
-        run: wasm-pack build --target bundler --out-dir worker/pkg
+        run: wasm-pack build --target web --out-dir worker/pkg
 
       - name: List files (Debug)
         run: ls -R worker
 
       - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          workingDirectory: 'worker'
-          command: deploy --verbose
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          cd worker
+          npx wrangler deploy --verbose > ../deploy_log.txt 2>&1 || (cat ../deploy_log.txt && exit 1)

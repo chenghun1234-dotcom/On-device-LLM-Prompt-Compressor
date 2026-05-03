@@ -18,7 +18,7 @@ export default {
   }
 };
 
-async fn handleCompress(request, env) {
+async function handleCompress(request, env) {
   try {
     const body = await request.json();
     const { instruction, context, examples, config } = body;

@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: On-device LLM Prompt Compressor
+  description: High-performance prompt compression API optimized for mobile LLMs.
+  version: 1.0.0
+servers:
+  - url: https://prompt-compressor-api.YOUR_SUBDOMAIN.workers.dev
+paths:
+  /api/compress:
+    post:
+      summary: Compress a prompt
+      description: Reduces the token count of a prompt by removing redundancy and low-entropy information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instruction:
+                  type: string
+                  description: The core instruction (0% compression recommended)
+                context:
+                  type: string
+                  description: The background context to be compressed
+                examples:
+                  type: string
+                  description: Few-shot examples
+                config:
+                  type: object
+                  properties:
+                    instruction_ratio:
+                      type: number
+                      default: 1.0
+                    context_ratio:
+                      type: number
+                      default: 0.5
+                    example_ratio:
+                      type: number
+                      default: 0.7
+      responses:
+        '200':
+          description: Successful compression
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  original_tokens:
+                    type: integer
+                  compressed_tokens:
+                    type: integer
+                  compressed_text:
+                    type: string
+                  compression_ratio:
+                    type: number

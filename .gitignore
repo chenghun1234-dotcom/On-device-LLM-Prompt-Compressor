@@ -1,0 +1,5 @@
+/target
+/worker/pkg
+/node_modules
+.wrangler
+.env

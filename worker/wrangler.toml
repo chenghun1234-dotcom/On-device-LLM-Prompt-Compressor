@@ -1,0 +1,17 @@
+name = "prompt-compressor-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+[[kv_namespaces]]
+binding = "ENTROPY_DATA"
+id = "YOUR_KV_NAMESPACE_ID" # To be filled by user or during deployment
+
+[site]
+bucket = "./public"
+
+[build]
+command = "wasm-pack build --target web --out-dir worker/pkg"
+watch_dir = "src"
